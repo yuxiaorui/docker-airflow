@@ -2,7 +2,7 @@ FROM puckel/docker-airflow
 MAINTAINER Yu XiaoRui
 
 COPY requirements.txt /opt/python/app/requirements.txt
-
+USER root
 RUN set -x \
     && buildDeps=' \
         gcc \
@@ -39,3 +39,4 @@ RUN set -x \
     && apt-get clean \
     && rm -rf /usr/src/python ~/.cache \
     && rm -rf /var/tmp
+USER airflow
