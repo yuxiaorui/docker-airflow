@@ -1,7 +1,6 @@
 FROM puckel/docker-airflow
 MAINTAINER Yu XiaoRui
 
-COPY sources.list /etc/apt/sources.list
 COPY requirements.txt /opt/python/app/requirements.txt
 
 RUN set -x \
@@ -35,7 +34,7 @@ RUN set -x \
     ' \
     && apt-get update && apt-get install -y $buildDeps --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
-    && pip install --no-cache-dir -r /opt/python/app/requirements.txt --trusted-host pypi.douban.com -i http://pypi.douban.com/simple \
+    && pip install --no-cache-dir -r /opt/python/app/requirements.txt \
     && apt-get autoremove \
     && apt-get clean \
     && rm -rf /usr/src/python ~/.cache \
