@@ -35,7 +35,7 @@ RUN set -x \
     && apt-get update && apt-get install -y $buildDeps --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
     && pip install --no-cache-dir -r /opt/python/app/requirements.txt \
-    && apt-get autoremove \
+    && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /usr/src/python ~/.cache \
     && rm -rf /var/tmp
